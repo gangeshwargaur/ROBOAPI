@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0 (Python 3.12.3 on win32)" generated="20240515 10:33:30.563" rpa="false" schemaversion="3">
+<suite id="s1" name="Read data json" source="E:\ROBOAPI\Tests\Read_data_json.robot">
+<test id="s1-t1" name="Test 7" line="14">
+<kw name="Set Variable" library="BuiltIn">
+<var>${filePath}</var>
+<arg>${EXECDIR}\\TestData\\data.json</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240515 10:33:33.442" level="INFO">${filePath} = E:\ROBOAPI\TestData\data.json</msg>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${filePath}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<var>${json_obj}</var>
+<arg>${filePath}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20240515 10:33:33.442" level="INFO" html="true">Getting file '&lt;a href="file://E:\ROBOAPI\TestData\data.json"&gt;E:\ROBOAPI\TestData\data.json&lt;/a&gt;'.</msg>
+<msg timestamp="20240515 10:33:33.442" level="INFO">${json_obj} = {
+
+		"id": "7",
+		"email": "michael.lawson@reqres.in",
+		"first_name": "Michael",
+		"last_name": "Lawson",
+		"avatar": "https://reqres.in/img/faces/7-image.jpg"
+
+}</msg>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${Valueof}</var>
+<arg>json.loads('''${json_obj}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240515 10:33:33.442" level="INFO">${Valueof} = {'id': '7', 'email': 'michael.lawson@reqres.in', 'first_name': 'Michael', 'last_name': 'Lawson', 'avatar': 'https://reqres.in/img/faces/7-image.jpg'}</msg>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Valueof["first_name"]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${first_name}</var>
+<arg>${Valueof["first_name"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240515 10:33:33.442" level="INFO">${first_name} = Michael</msg>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${firstname}</arg>
+<arg>Michael</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</kw>
+<tag>Demo</tag>
+<status status="PASS" starttime="20240515 10:33:33.442" endtime="20240515 10:33:33.442"/>
+</test>
+<status status="PASS" starttime="20240515 10:33:30.563" endtime="20240515 10:33:33.458"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Demo</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Read data json">Read data json</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

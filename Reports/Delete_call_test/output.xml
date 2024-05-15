@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0 (Python 3.12.3 on win32)" generated="20240514 10:05:20.467" rpa="false" schemaversion="3">
+<suite id="s1" name="Delete call test" source="E:\ROBOAPI\Tests\Delete_call_test.robot">
+<test id="s1-t1" name="Test 3" line="13">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>Session1</arg>
+<arg>${base_url}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240514 10:05:20.961" level="INFO">Creating Session using : alias=Session1, url=https://jsonplaceholder.typicode.com/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240514 10:05:20.961" endtime="20240514 10:05:20.961"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${endpoint}</var>
+<arg>posts/1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240514 10:05:20.961" level="INFO">${endpoint} = posts/1</msg>
+<status status="PASS" starttime="20240514 10:05:20.961" endtime="20240514 10:05:20.961"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>Session1</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20240514 10:05:22.061" level="INFO">DELETE Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20240514 10:05:22.061" level="INFO">DELETE Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 14 May 2024 04:35:22 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1715661321&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=bc4an0712BG4kRJM7dHtYRnrwWW%2Fi6pXYQeUxE59ie4%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1715661321&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=bc4an0712BG4kRJM7dHtYRnrwWW%2Fi6pXYQeUxE59ie4%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1715661327', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '88382e5a4cddab62-SIN', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg timestamp="20240514 10:05:22.061" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240514 10:05:20.961" endtime="20240514 10:05:22.061"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240514 10:05:22.061" endtime="20240514 10:05:22.061"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240514 10:05:22.061" endtime="20240514 10:05:22.061"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240514 10:05:22.061" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20240514 10:05:22.061" endtime="20240514 10:05:22.061"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240514 10:05:22.061" endtime="20240514 10:05:22.061"/>
+</kw>
+<tag>Demo</tag>
+<status status="PASS" starttime="20240514 10:05:20.961" endtime="20240514 10:05:22.061"/>
+</test>
+<status status="PASS" starttime="20240514 10:05:20.467" endtime="20240514 10:05:22.061"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Demo</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Delete call test">Delete call test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
